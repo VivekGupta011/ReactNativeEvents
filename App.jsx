@@ -1,7 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as React from 'react';
+import React from 'react';
+import Icon from 'react-native-vector-icons/MaterialIcons'; // Using Material Icons
 import { StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
 import 'react-native-reanimated';
@@ -32,7 +33,6 @@ function DrawerNavigator() {
     <Drawer.Navigator initialRouteName="Home">
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="ExpoDetails" component={ExpoDetails} />
-      {/* <Drawer.Screen name="Speakers" component={Speakers} /> */}
     </Drawer.Navigator>
   );
 }
@@ -40,7 +40,23 @@ function DrawerNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Drawer">
+      <Stack.Navigator
+        initialRouteName="Drawer"
+        screenOptions={{
+          headerRight: () => (
+            <Icon
+              name="notifications-none" // Outlined bell icon
+              size={24}
+              color="#000"
+              style={{ marginRight: 15 }} // Adds spacing from the right edge
+              onPress={() => {
+                // Define an action when the icon is pressed
+                console.log('Bell icon pressed');
+              }}
+            />
+          ),
+        }}
+      >
         {/* Main Drawer Navigator */}
         <Stack.Screen
           name="Drawer"
@@ -51,7 +67,9 @@ export default function App() {
         <Stack.Screen
           name="Agenda"
           component={Agenda}
-          options={{ animation: 'slide_from_bottom' }}
+          options={{
+            animation: 'slide_from_bottom',
+          }}
         />
         <Stack.Screen
           name="Exhibitors"

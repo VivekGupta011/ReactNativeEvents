@@ -58,12 +58,14 @@ const DownloadPack = forwardRef((props, ref) => {
           <TextInput
             style={styles.input}
             placeholder="Your Name*"
+            placeholderTextColor="lightgrey"
             value={name}
             onChangeText={setName}
           />
           <TextInput
             style={styles.input}
             placeholder="Email*"
+            placeholderTextColor="lightgrey"
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
@@ -71,6 +73,7 @@ const DownloadPack = forwardRef((props, ref) => {
           <TextInput
             style={styles.input}
             placeholder="Your Phone*"
+            placeholderTextColor="lightgrey"
             value={phone}
             onChangeText={setPhone}
             keyboardType="phone-pad"
@@ -78,6 +81,7 @@ const DownloadPack = forwardRef((props, ref) => {
           <TextInput
             style={styles.input}
             placeholder="Company Name*"
+            placeholderTextColor="lightgrey"
             value={company}
             onChangeText={setCompany}
           />

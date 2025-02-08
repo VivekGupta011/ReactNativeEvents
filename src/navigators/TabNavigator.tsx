@@ -44,7 +44,7 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={{
-      tabBarShowLabel: false,
+      tabBarShowLabel: true,
       tabBarStyle: styles.tabBarStyle,
       tabBarBackground: () => (
         <BlurView
@@ -55,22 +55,33 @@ const TabNavigator = () => (
       ),
     }}>
     <Tab.Screen
-      name="HomeTab"
-      component={HomeTabScreen}
-      options={{
-        headerShown: false,
-        tabBarIcon: ({focused}) => (
-          <GetTicket
-            width={45}
-            height={45}
-            fillColor="#ff0000"
-            strokeColor="#fff"
-          />
-        ),
-      }}
-    />
+  name="Get Ticket"
+  component={HomeTabScreen}
+  options={{
+    headerShown: false,
+    tabBarIcon: ({focused}) => (
+      <GetTicket
+        width={45}
+        height={45}
+        fillColor="#ff0000"
+        strokeColor="#fff"
+      />
+    ),
+    tabBarLabelStyle: {
+      fontSize: 10, // Text size
+      color: 'black', // Text color
+      fontWeight: 'bold',
+      
+    },
+    tabBarItemStyle: {
+      marginTop: -10, // Lift icon and label up
+    },
+  }}
+/>
+
+
     <Tab.Screen
-      name="Favorites"
+      name="Home"
       component={FavoritesScreen}
       options={{
         headerShown: false,
@@ -82,11 +93,17 @@ const TabNavigator = () => (
             // strokeColor={focused ? "#000" : "#666"}
           />
         ),
+        tabBarLabelStyle: {
+          fontSize: 10, // Increase text size
+          color: 'black', // Change text color
+          fontWeight:'bold',
+        },
+        
       }}
     />
 
     <Tab.Screen
-      name="Cart"
+      name="Book A Stand"
       component={CartScreen}
       options={{
         headerShown: false,
@@ -98,6 +115,14 @@ const TabNavigator = () => (
             strokeColor="#fff"
           />
         ),
+        tabBarLabelStyle: {
+          fontSize: 10, // Increase text size
+          color: 'black', // Change text color
+          fontWeight:'bold',
+        },
+         tabBarItemStyle: {
+      marginTop: -10, // Lift icon and label up
+    },
       }}
     />
   </Tab.Navigator>
@@ -110,7 +135,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tabBarStyle: {
-    height: 80,
+    height: 85,
+    paddingHorizontal:50,
     position: 'absolute',
     // backgroundColor: COLORS.primaryBlackRGBA,
     borderTopWidth: 0,
